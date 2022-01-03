@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container p-3 my-3 border text-dark">
+<strong>
+Znaleziono poniższe ogłoszenia: <br>
+</strong>
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+    <th> Numer ogłoszenia </th>
+    <th>Tytuł</th>
+    <th> Treść ogłoszenia</th>
+    <th> Kategoria</th>
+    <th> Autor ogłoszenia </th>
+</tr>
+</thead>
+
+    {% for ad in ads %}
+        <tr>
+        <td> {{ ad.id }} </td>
+        <td>{{ ad.title }} </td>
+        <td> {{ ad.content }}</td>
+          <td> {% for category in ad.category.all %}
+                {{ category }}
+            {% endfor %}
+        </td>
+        <td>{{ ad.author}} </td>
+        </tr>
+    {% endfor %}
+</table>
+</div>
+
+<div class='container p-3 my-3 border text-dark'>
+<a href="/basic_view/"> Powrót do strony głównej </a>
+</div>
+{% endblock %}

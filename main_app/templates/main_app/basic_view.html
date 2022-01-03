@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container p-3 my-3 text-dark">
+<div class="container p-3 my-3 border text-dark">
+    <strong>
+WITAMY W LOKALNEJ TABLICY OGŁOSZEŃ DSM NIEPRUSZEWO
+    </strong>
+</div>
+
+<div class = 'container'>
+    <div class="col p-3 my-3 border text-dark">
+    Szukasz czegoś konkretnego? Wybierz z poniższych opcji <br>
+        lub <a href="/all_ads/"> pokaż wszystkie ogłoszenia </a>
+    </div>
+    <div class="col p-3 my-3 border text-dark">
+    Chcesz dodać ogłoszenie? Najpierw
+    <a href='#'> zaloguj się </a> lub
+        <a href="#" > zarejestruj się. </a>
+    </div>
+</div>
+
+ <form action="" method = "POST">
+        {% csrf_token %}
+
+ <div class="row">
+     <div class="col p-3 my-3 border text-dark">
+        Kategoria ogłoszenia <br>
+
+     <select multiple name="category" class='select2-dropdown'>
+      {%  for category in categories %}
+              <option value={{ category.pk }}>{{category.name}}</option>
+          {% endfor %}
+        </select> <br>
+     </div>
+ </div>
+
+<div class="row p-3 my-3 border text-dark"> Słowo kluczowe
+    <input type="text" maxlength="64" name="keyword">
+</div>
+
+    <div class="row p-3 my-3  text-dark">
+    <input type="submit" name='selected' value="Wyszukaj ogłoszenia">
+    </div>
+ </form>
+
+</div>
+
+{% endblock %}

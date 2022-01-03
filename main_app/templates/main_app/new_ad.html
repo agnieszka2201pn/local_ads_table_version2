@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container p-3 my-3 border text-dark">
+<div class="row p3 my-3 border text-dark">
+    <strong>
+Dodaj ogłoszenie
+    </strong>
+</div>
+
+
+<div class = 'row text-dark' >
+<form action ="" method = "POST">
+    {%  csrf_token %}
+    <label> Podaj tytuł </label>
+    <input type="text" name="title" maxlength="64"> <br>
+    <label> Wybierz kategorię </label>
+    <select name="category">
+        {% for category in categories %}
+        <option value= {{category.0 }}> {{ category.1 }}</option>
+        {%  endfor %}
+    </select> <br>
+    <label> Wpisz treść ogłoszenia </label>
+    <textarea name="content"> </textarea><br>
+    <label> Podaj swoje dane kontaktowe (imię, nazwisko, email, telefon) </label>
+    <input type="text" name="contact"> <br>
+    <label> Podaj hasło. Zapamiętaj swoje hasło, będzie Ci potrzebne aby usunąć ogłoszenie. </label> <br>
+    <input type="password" name="password" minlength=4>
+    <input type="submit" name="submit" value="Zatwierdź">
+</form>
+</div>
+</div>
+
+<div class='container p-3 my-3 border text-dark'>
+<a href="/basic_view/"> Powrót do strony głównej </a>
+</div>
+{% endblock %}
